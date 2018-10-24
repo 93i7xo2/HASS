@@ -1,0 +1,14 @@
+@echo off
+set BATCH_NAME=open_openstack
+start /B networkstatus
+send "002.evt"
+tasdelay 4
+send "001.evt"
+tasdelay 4
+:end
+@taskkill /f /im networkstatus.exe
+echo END_TEST_CASE
+goto :eof
+:fail
+echo Fail
+goto end

@@ -1,0 +1,63 @@
+{
+  "TreeViewName": "SEPProject",
+  "IncludePathes": [
+    "common"
+  ],
+  "TestCases": [
+    {
+      "Name": "create_cluster.tas",
+      "RelativePath": "create_cluster",
+      "Level": 0
+    },
+    {
+      "Name": "show_details_cluster.tas",
+      "RelativePath": "show_details_cluster",
+      "Level": 0
+    },
+    {
+      "Name": "delete_cluster.tas",
+      "RelativePath": "delete_cluster",
+      "Level": 0
+    },
+    {
+      "Name": "remove_nodes_from_cluster.tas",
+      "RelativePath": "remove_nodes_from_cluster",
+      "Level": 0
+    },
+    {
+      "Name": "shutoff_nodes.tas",
+      "RelativePath": "shutoff_nodes",
+      "Level": 0
+    },
+    {
+      "Name": "start_nodes.tas",
+      "RelativePath": "start_nodes",
+      "Level": 0
+    },
+    {
+      "Name": "reboot_nodes.tas",
+      "RelativePath": "reboot_nodes",
+      "Level": 0
+    },
+    {
+      "Name": "open_openstack.tas",
+      "RelativePath": "open_openstack",
+      "Level": 0
+    },
+    {
+      "Name": "close_openstack.tas",
+      "RelativePath": "close_openstack",
+      "Level": 0
+    },
+    {
+      "Name": "add_nodes_to_cluster.tas",
+      "RelativePath": "add_nodes_to_cluster",
+      "Level": 0
+    },
+    {
+      "Name": "open_cmd.tas",
+      "RelativePath": "open_cmd",
+      "Level": 0
+    }
+  ]
+}

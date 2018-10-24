@@ -1,0 +1,7 @@
+{
+  "Env": {
+    "korat_device_screen_type": "local",
+    "korat_device_mouse_type": "localfast",
+    "korat_device_keyboard_type": "local"
+  }
+}
