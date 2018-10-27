@@ -2,9 +2,16 @@
 set BATCH_NAME=open_openstack
 start /B networkstatus
 send "002.evt"
-tasdelay 4
+wait -t img -vlp 4.png(TM(ccoeffnormed,0.95)) 30
+@if %ERRORLEVEL%==0 (echo Success) else goto fail
 send "001.evt"
-tasdelay 4
+wait -t img -vlp 5.png(TM(ccoeffnormed,0.95)) 60
+@if %ERRORLEVEL%==0 (echo Success) else goto fail
+send "003.evt"
+wait -t img -vlp 3.png(TM(ccoeffnormed,0.95)) 30
+@if %ERRORLEVEL%==0 (echo Success) else goto fail
+assert -t img -bg "3.png" -vlp 3.png(TM(ccoeffnormed,0.95)) -a n:1:t
+@if %ERRORLEVEL%==0 (echo Success) else goto fail
 :end
 @taskkill /f /im networkstatus.exe
 echo END_TEST_CASE
