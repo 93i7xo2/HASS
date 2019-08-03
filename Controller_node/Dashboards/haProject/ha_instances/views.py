@@ -16,7 +16,7 @@ from openstack_dashboard.dashboards.haProject.ha_instances import tables as proj
 
 LOG = logging.getLogger(__name__)
 config = ConfigParser.RawConfigParser()
-config.read('/home/controller/Desktop/HASS/Controller_node/HASS/hass.conf')
+config.read("/home/controller/HASS/hass.conf")
 
 
 # user = config.get("rpc", "rpc_username")

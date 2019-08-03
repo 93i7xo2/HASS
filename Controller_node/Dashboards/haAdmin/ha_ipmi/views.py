@@ -11,7 +11,7 @@ from openstack_dashboard.dashboards.haAdmin.ha_ipmi import tables as project_tab
 
 LOG = logging.getLogger(__name__)
 
-conf_path = "/home/controller/Desktop/HASS/Controller_node/HASS/hass.conf"
+conf_path =  "/home/controller/HASS/hass.conf"
 config = ConfigParser.RawConfigParser()
 config.read(conf_path)
 

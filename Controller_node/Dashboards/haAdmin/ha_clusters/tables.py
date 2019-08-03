@@ -9,7 +9,7 @@ from horizon import messages
 from horizon import tables
 
 config = ConfigParser.RawConfigParser()
-config.read('/home/controller/Desktop/HASS/Controller_node/HASS/hass.conf')
+config.read('/home/controller/HASS/hass.conf')
 
 
 # user = config.get("rpc", "rpc_username")

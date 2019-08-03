@@ -21,7 +21,7 @@ from horizon import workflows
 from openstack_dashboard import api
 
 config = ConfigParser.RawConfigParser()
-config.read('/home/controller/Desktop/HASS/Controller_node/HASS/hass.conf')
+config.read('/home/controller/HASS/hass.conf')
 
 
 # user = config.get("rpc", "rpc_username")
@@ -63,19 +63,20 @@ class AddHostsToHAClusterAction(workflows.MembershipAction):
         field_name = self.get_member_field_name('member')
         self.fields[field_name] = forms.MultipleChoiceField(required=False)
 
-        hosts = []
+        hypervisors = []
         try:
-            hosts = api.nova.host_list(request)
+            hypervisors = api.nova.hypervisor_list(request)
         except Exception:
             exceptions.handle(request, err_msg)
 
-        host_names = []
-        for host in hosts:
-            if host.host_name not in host_names and host.service == u'compute':
-                host_names.append(host.host_name)
-        host_names.sort()
+        # https://developer.openstack.org/api-ref/compute/?expanded=list-hypervisors-detail#list-hypervisors
+        hypervisor_hostnames = []
+        for hypervisor in hypervisors:
+            if hypervisor.hypervisor_hostname not in hypervisor_hostnames and hypervisor.status == u'enabled':
+                hypervisor_hostnames.append(hypervisor.hypervisor_hostname)
+        hypervisor_hostnames.sort()
 
-        self.fields[field_name].choices = [(host_name, host_name) for host_name in host_names]
+        self.fields[field_name].choices = [(hypervisor_hostname, hypervisor_hostname) for hypervisor_hostname in hypervisor_hostnames]
 
     class Meta(object):
         name = _("Computing Nodes")
@@ -96,19 +97,20 @@ class AddNodesToHAClusterAction(workflows.MembershipAction):
         field_name = self.get_member_field_name('member')
         self.fields[field_name] = forms.MultipleChoiceField(required=False)
 
-        hosts = []
+        # https://developer.openstack.org/api-ref/compute/?expanded=list-hypervisors-detail#list-hypervisors
+        hypervisors = []
         try:
-            hosts = api.nova.host_list(request)
+            hypervisors = api.nova.hypervisor_list(request)
         except Exception:
             exceptions.handle(request, err_msg)
 
-        host_names = []
-        for host in hosts:
-            if host.host_name not in host_names and host.service == u'compute':
-                host_names.append(host.host_name)
-        host_names.sort()
+        hypervisor_hostnames = []
+        for hypervisor in hypervisors:
+            if hypervisor.hypervisor_hostname not in hypervisor_hostnames and hypervisor.status == u'enabled':
+                hypervisor_hostnames.append(hypervisor.hypervisor_hostname)
+        hypervisor_hostnames.sort()
 
-        self.fields[field_name].choices = [(host_name, host_name) for host_name in host_names]
+        self.fields[field_name].choices = [(hypervisor_hostname, hypervisor_hostname) for hypervisor_hostname in hypervisor_hostnames]
 
     class Meta(object):
         name = _("Computing Nodes")

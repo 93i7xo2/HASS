@@ -32,7 +32,7 @@ from openstack_dashboard.dashboards.project.instances \
 
 LOG = logging.getLogger(__name__)
 config = ConfigParser.RawConfigParser()
-config.read('/home/controller/Desktop/HASS/Controller_node/HASS/hass.conf')
+config.read('/home/controller/HASS/hass.conf')
 
 
 # user = config.get("rpc", "rpc_username")
@@ -73,8 +73,9 @@ class AddForm(forms.SelfHandlingForm):
         try:
             instances, self._more = api.nova.server_list(
                 self.request,
-                # search_opts=search_opts,
-                all_tenants=True)
+                search_opts={'all_tenants':'True'},
+                detailed=True
+                )
         except Exception:
             self._more = False
             exceptions.handle(self.request,
