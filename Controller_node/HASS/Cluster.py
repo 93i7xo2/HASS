@@ -58,6 +58,7 @@ class Cluster(ClusterInterface):
             result = self.failResult(message, data)
             logging.error(message)
         finally:
+            logging.info(self.getAllNodeStr())
             return result
 
     def deleteNode(self, node_name):

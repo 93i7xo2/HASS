@@ -268,7 +268,7 @@ class InstanceFailure(threading.Thread):
             state = self.get_instance_state(instance.id)
             # maybe vm just be reboot
             # print("net state:", state)
-            if "ACTIVE" in state:
+            if state is not None and "ACTIVE" in state:
                 # print("ip ?", instance.network_provider[0])
                 network_state = self.ping_instance(instance.network_provider[0])
                 # print("second ping :", network_state)
